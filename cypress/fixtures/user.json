@@ -1,0 +1,17 @@
+
+{
+    "firstname": "Ivanna",
+    "lastname": "Kovaliv",
+    "email": "fortestingapp1109@gmail.com",
+    "telephone": "+380668439261",
+    "fax": "12345678",
+    "company": "testCompany",
+    "address1": "test_1",
+    "address2": "test_2",
+    "city": "Kyiv",
+    "zone": "Kyiv",
+    "postcode": "02022",
+    "country": "Ukraine",
+    "loginname": "ivanna_kovaliv",
+    "password": 78965411
+  }

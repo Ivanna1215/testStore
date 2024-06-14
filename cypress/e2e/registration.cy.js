@@ -1,26 +1,33 @@
 import user from '../fixtures/user.json';
 import { faker } from '@faker-js/faker';
 
-describe('Registration test suite', () => {
+describe('Registration positive test suite', () => {
 
-  it('Registration with valid data', () => {
-
-    user.firstname = faker.internet.userName();
-    user.email = faker.internet.email();
-    user.fax = '12345566';
-    user.address1 = faker.location.streetAddress();
-    user.address1 = faker.location.secondaryAddress();
-    user.address2 = faker.location.zipCode();
-    user.telephone = faker.phone.number();
-
+  beforeEach(() => {
     cy.log('Open home page');
     cy.visit('/');
 
     cy.log('Open login page');
     cy.get('#customer_menu_top').click();
 
+  });
+
+  afterEach(() => {
+
+  })
+  it('Registration with valid data', () => {
+
     cy.log('Open account/create page');
     cy.get('[title="Continue"]').click();
+
+    user.firstname = faker.name.firstName();
+    user.email = faker.internet.email();
+    user.fax = '12345566';
+    user.address1 = faker.location.streetAddress();
+    user.address1 = faker.location.secondaryAddress();
+    user.address2 = faker.location.zipCode();
+    user.telephone = faker.phone.number();
+    user.loginname = faker.internet.userName();
 
     cy.log('Fill in the form');
     cy.get('#AccountFrm_firstname').type(user.firstname);
@@ -54,6 +61,12 @@ describe('Registration test suite', () => {
 
   })
 
+  it.only('Confirm successfull registration with auth', () => {
+    cy.log("Fill login form")
+    cy.get('#loginFrm_loginname').type(user.loginname)
+    cy.get('#loginFrm_password').type(user.password)
+    cy.get('[title="Login"]').click()
 
+  })
 
 })

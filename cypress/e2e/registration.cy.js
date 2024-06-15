@@ -13,8 +13,10 @@ describe('Registration positive test suite', () => {
   });
 
   afterEach(() => {
-
+    cy.log('Verify account page');
+    cy.get('.subtext').should('contain', user.firstname)
   })
+
   it('Registration with valid data', () => {
 
     cy.log('Open account/create page');
@@ -30,6 +32,7 @@ describe('Registration positive test suite', () => {
     user.loginname = faker.internet.userName();
 
     cy.log('Fill in the form');
+
     cy.get('#AccountFrm_firstname').type(user.firstname);
     cy.get('#AccountFrm_lastname').type(user.lastname);
     cy.get('#AccountFrm_email').type(user.email);
@@ -61,7 +64,7 @@ describe('Registration positive test suite', () => {
 
   })
 
-  it.only('Confirm successfull registration with auth', () => {
+  it('Confirm successfull registration with auth', () => {
     cy.log("Fill login form")
     cy.get('#loginFrm_loginname').type(user.loginname)
     cy.get('#loginFrm_password').type(user.password)

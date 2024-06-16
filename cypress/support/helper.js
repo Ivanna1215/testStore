@@ -1,4 +1,4 @@
-export function login(loginname,password) {
+export function login(loginname, password) {
     cy.log('Open home page');
     cy.visit('/');
 
@@ -10,3 +10,4 @@ export function login(loginname,password) {
     cy.get('#loginFrm_password').type(password)
     cy.get('[title="Login"]').click()
 }
+
